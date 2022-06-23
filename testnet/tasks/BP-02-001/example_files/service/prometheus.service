@@ -1,0 +1,16 @@
+[Unit]
+Description=Prometheus
+After=network.target
+
+[Service]
+User=dd
+Group=dd
+Type=simple
+WorkingDirectory=/home/dd/monitor/prometheus-2.36.1.linux-amd64
+ExecStart=/home/dd/monitor/prometheus-2.36.1.linux-amd64/prometheus --config.file=prometheus.yml
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=prometheus
+
+[Install]
+WantedBy=multi-user.target
